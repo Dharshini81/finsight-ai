@@ -11,13 +11,17 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AnalysisRouteImport } from './routes/analysis'
 import { Route as AnalyzeRouteImport } from './routes/analyze'
 import { Route as AskRouteImport } from './routes/ask'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as LearnRouteImport } from './routes/learn'
 import { Route as SecurityRouteImport } from './routes/security'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as TechnologyRouteImport } from './routes/technology'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -27,6 +31,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnalysisRoute = AnalysisRouteImport.update({
@@ -59,92 +68,135 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LearnRoute = LearnRouteImport.update({
+  id: '/learn',
+  path: '/learn',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SecurityRoute = SecurityRouteImport.update({
   id: '/security',
   path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechnologyRoute = TechnologyRouteImport.update({
+  id: '/technology',
+  path: '/technology',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/analysis': typeof AnalysisRoute
   '/analyze': typeof AnalyzeRoute
   '/ask': typeof AskRoute
   '/calculator': typeof CalculatorRoute
   '/compare': typeof CompareRoute
   '/dashboard': typeof DashboardRoute
+  '/learn': typeof LearnRoute
   '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
+  '/technology': typeof TechnologyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/analysis': typeof AnalysisRoute
   '/analyze': typeof AnalyzeRoute
   '/ask': typeof AskRoute
   '/calculator': typeof CalculatorRoute
   '/compare': typeof CompareRoute
   '/dashboard': typeof DashboardRoute
+  '/learn': typeof LearnRoute
   '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
+  '/technology': typeof TechnologyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/analysis': typeof AnalysisRoute
   '/analyze': typeof AnalyzeRoute
   '/ask': typeof AskRoute
   '/calculator': typeof CalculatorRoute
   '/compare': typeof CompareRoute
   '/dashboard': typeof DashboardRoute
+  '/learn': typeof LearnRoute
   '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
+  '/technology': typeof TechnologyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/analysis'
     | '/analyze'
     | '/ask'
     | '/calculator'
     | '/compare'
     | '/dashboard'
+    | '/learn'
     | '/security'
+    | '/settings'
+    | '/technology'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/admin'
     | '/analysis'
     | '/analyze'
     | '/ask'
     | '/calculator'
     | '/compare'
     | '/dashboard'
+    | '/learn'
     | '/security'
+    | '/settings'
+    | '/technology'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/analysis'
     | '/analyze'
     | '/ask'
     | '/calculator'
     | '/compare'
     | '/dashboard'
+    | '/learn'
     | '/security'
+    | '/settings'
+    | '/technology'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRoute
   AnalysisRoute: typeof AnalysisRoute
   AnalyzeRoute: typeof AnalyzeRoute
   AskRoute: typeof AskRoute
   CalculatorRoute: typeof CalculatorRoute
   CompareRoute: typeof CompareRoute
   DashboardRoute: typeof DashboardRoute
+  LearnRoute: typeof LearnRoute
   SecurityRoute: typeof SecurityRoute
+  SettingsRoute: typeof SettingsRoute
+  TechnologyRoute: typeof TechnologyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -161,6 +213,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/analysis': {
@@ -205,11 +264,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/learn': {
+      id: '/learn'
+      path: '/learn'
+      fullPath: '/learn'
+      preLoaderRoute: typeof LearnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/security': {
       id: '/security'
       path: '/security'
       fullPath: '/security'
       preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technology': {
+      id: '/technology'
+      path: '/technology'
+      fullPath: '/technology'
+      preLoaderRoute: typeof TechnologyRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -218,13 +298,17 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRoute,
   AnalysisRoute: AnalysisRoute,
   AnalyzeRoute: AnalyzeRoute,
   AskRoute: AskRoute,
   CalculatorRoute: CalculatorRoute,
   CompareRoute: CompareRoute,
   DashboardRoute: DashboardRoute,
+  LearnRoute: LearnRoute,
   SecurityRoute: SecurityRoute,
+  SettingsRoute: SettingsRoute,
+  TechnologyRoute: TechnologyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
