@@ -19,6 +19,7 @@ import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as LearnRouteImport } from './routes/learn'
+import { Route as PresentRouteImport } from './routes/present'
 import { Route as SecurityRouteImport } from './routes/security'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as TechnologyRouteImport } from './routes/technology'
@@ -73,6 +74,11 @@ const LearnRoute = LearnRouteImport.update({
   path: '/learn',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PresentRoute = PresentRouteImport.update({
+  id: '/present',
+  path: '/present',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SecurityRoute = SecurityRouteImport.update({
   id: '/security',
   path: '/security',
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/compare': typeof CompareRoute
   '/dashboard': typeof DashboardRoute
   '/learn': typeof LearnRoute
+  '/present': typeof PresentRoute
   '/security': typeof SecurityRoute
   '/settings': typeof SettingsRoute
   '/technology': typeof TechnologyRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByTo {
   '/compare': typeof CompareRoute
   '/dashboard': typeof DashboardRoute
   '/learn': typeof LearnRoute
+  '/present': typeof PresentRoute
   '/security': typeof SecurityRoute
   '/settings': typeof SettingsRoute
   '/technology': typeof TechnologyRoute
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   '/compare': typeof CompareRoute
   '/dashboard': typeof DashboardRoute
   '/learn': typeof LearnRoute
+  '/present': typeof PresentRoute
   '/security': typeof SecurityRoute
   '/settings': typeof SettingsRoute
   '/technology': typeof TechnologyRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/dashboard'
     | '/learn'
+    | '/present'
     | '/security'
     | '/settings'
     | '/technology'
@@ -163,6 +173,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/dashboard'
     | '/learn'
+    | '/present'
     | '/security'
     | '/settings'
     | '/technology'
@@ -178,6 +189,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/dashboard'
     | '/learn'
+    | '/present'
     | '/security'
     | '/settings'
     | '/technology'
@@ -194,6 +206,7 @@ export interface RootRouteChildren {
   CompareRoute: typeof CompareRoute
   DashboardRoute: typeof DashboardRoute
   LearnRoute: typeof LearnRoute
+  PresentRoute: typeof PresentRoute
   SecurityRoute: typeof SecurityRoute
   SettingsRoute: typeof SettingsRoute
   TechnologyRoute: typeof TechnologyRoute
@@ -271,6 +284,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LearnRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/present': {
+      id: '/present'
+      path: '/present'
+      fullPath: '/present'
+      preLoaderRoute: typeof PresentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/security': {
       id: '/security'
       path: '/security'
@@ -306,6 +326,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompareRoute: CompareRoute,
   DashboardRoute: DashboardRoute,
   LearnRoute: LearnRoute,
+  PresentRoute: PresentRoute,
   SecurityRoute: SecurityRoute,
   SettingsRoute: SettingsRoute,
   TechnologyRoute: TechnologyRoute,
